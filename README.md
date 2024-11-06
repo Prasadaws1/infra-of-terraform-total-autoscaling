@@ -1,0 +1,1 @@
+# infra-of-terraform-total-autoscaling
