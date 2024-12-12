@@ -57,3 +57,24 @@ resource "aws_route_table_association" "seven" {
 subnet_id = aws_subnet.three.id
 route_table_id = aws_route_table.five.id
 }
+
+############################################################
+resource "aws_eip" "nat_gateway" {
+  vpc = true
+}
+
+resource "aws_nat_gateway" "example" {
+  allocation_id = aws_eip.nat_gateway.id
+  subnet_id     = aws_subnet.public_subnet.id
+  tags = {
+    Name = "example-nat-gateway"
+  }
+}
+
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "private-route-table"
+  }
+}
