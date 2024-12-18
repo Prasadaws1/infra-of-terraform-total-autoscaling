@@ -1,4 +1,4 @@
-resource "aws_vpc" "one" {
+resource "aws_vpc" "ont" {
 tags = {
 Name = "myvpc"
 }
